@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLMetroAT", "LoLMetroAT\LoLMetroAT.csproj", "{9319C4F1-D1FF-4949-BF77-4B28AABB71D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLAutoGenerateTool", "LoLAutoGenerateTool\LoLAutoGenerateTool.csproj", "{102CD5CE-0358-4B60-A5EF-4910B152DD22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiotSharp", "RiotSharp\RiotSharp.csproj", "{4BFB1D8E-D2E7-4E2F-A50A-1E5F1AEB0B59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9319C4F1-D1FF-4949-BF77-4B28AABB71D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9319C4F1-D1FF-4949-BF77-4B28AABB71D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9319C4F1-D1FF-4949-BF77-4B28AABB71D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9319C4F1-D1FF-4949-BF77-4B28AABB71D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{102CD5CE-0358-4B60-A5EF-4910B152DD22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{102CD5CE-0358-4B60-A5EF-4910B152DD22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{102CD5CE-0358-4B60-A5EF-4910B152DD22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{102CD5CE-0358-4B60-A5EF-4910B152DD22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BFB1D8E-D2E7-4E2F-A50A-1E5F1AEB0B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BFB1D8E-D2E7-4E2F-A50A-1E5F1AEB0B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BFB1D8E-D2E7-4E2F-A50A-1E5F1AEB0B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BFB1D8E-D2E7-4E2F-A50A-1E5F1AEB0B59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

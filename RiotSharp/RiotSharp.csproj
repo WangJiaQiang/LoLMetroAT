@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4BFB1D8E-D2E7-4E2F-A50A-1E5F1AEB0B59}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RiotSharp</RootNamespace>
+    <AssemblyName>RiotSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\System.Reactive.Core.3.1.1\lib\net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\System.Reactive.Interfaces.3.1.1\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\System.Reactive.Linq.3.1.1\lib\net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cache.cs" />
+    <Compile Include="Champion_Mastery_V3\ChampionMasteryDTO.cs" />
+    <Compile Include="Champion_V3\ChampionDto.cs" />
+    <Compile Include="Champion_V3\ChampionListDto.cs" />
+    <Compile Include="Http\Interfaces\IRateLimitedRequester.cs" />
+    <Compile Include="Http\Interfaces\IRequester.cs" />
+    <Compile Include="Http\RateLimitedRequester.cs" />
+    <Compile Include="Http\RateLimiter.cs" />
+    <Compile Include="Http\Requester.cs" />
+    <Compile Include="Http\RequesterBase.cs" />
+    <Compile Include="Http\Requesters.cs" />
+    <Compile Include="ICache.cs" />
+    <Compile Include="Interfaces\IRiotApi.cs" />
+    <Compile Include="Interfaces\IStaticRiotApi.cs" />
+    <Compile Include="League_V3\LeagueItemDTO.cs" />
+    <Compile Include="League_V3\LeagueListDTO.cs" />
+    <Compile Include="League_V3\LeaguePositionDTO.cs" />
+    <Compile Include="League_V3\MiniSeriesDTO.cs" />
+    <Compile Include="Lol_Static_Data_V3\BlockDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\BlockItemDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\Cache\ChampionListStaticWrapper.cs" />
+    <Compile Include="Lol_Static_Data_V3\Cache\ChampionStaticWrapper.cs" />
+    <Compile Include="Lol_Static_Data_V3\Cache\ItemListStaticWrapper.cs" />
+    <Compile Include="Lol_Static_Data_V3\Cache\ItemStaticWrapper.cs" />
+    <Compile Include="Lol_Static_Data_V3\Cache\SummonerSpellListStaticWrapper.cs" />
+    <Compile Include="Lol_Static_Data_V3\Cache\SummonerSpellStaticWrapper.cs" />
+    <Compile Include="Lol_Static_Data_V3\ChampionDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\ChampionListDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\ChampionSpellDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\DataRequested.cs" />
+    <Compile Include="Lol_Static_Data_V3\GoldDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\GroupDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\ImageDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\InfoDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\InventoryDataStatsDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\ItemDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\ItemListDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\ItemTreeDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\LanguageStringsDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\LevelTipDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\MapDataDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\MapDetailsDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\MasteryDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\MasteryListDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\MasteryTreeDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\MasteryTreeItemDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\MasteryTreeListDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\MetaDataDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\PassiveDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\ProfileIconDataDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\ProfileIconDetailsDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\RealmDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\RecommendedDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\RuneDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\RuneListDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\RuneStatsDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\SkinDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\SpellVarsDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\StatsDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\SummonerSpellDtoStatic.cs" />
+    <Compile Include="Lol_Static_Data_V3\SummonerSpellListDtoStatic.cs" />
+    <Compile Include="Lol_Status_V3\Incident.cs" />
+    <Compile Include="Lol_Status_V3\Message.cs" />
+    <Compile Include="Lol_Status_V3\Service.cs" />
+    <Compile Include="Lol_Status_V3\ShardStatus.cs" />
+    <Compile Include="Lol_Status_V3\Translation.cs" />
+    <Compile Include="Masteries_V3\MasteryDto.cs" />
+    <Compile Include="Masteries_V3\MasteryPageDto.cs" />
+    <Compile Include="Masteries_V3\MasteryPagesDto.cs" />
+    <Compile Include="Match_V3\Enums\AscendedType.cs" />
+    <Compile Include="Match_V3\Enums\BuildingType.cs" />
+    <Compile Include="Match_V3\Enums\CapturedPoint.cs" />
+    <Compile Include="Match_V3\Enums\Converters\AscendedTypeConverter.cs" />
+    <Compile Include="Match_V3\Enums\Converters\BuildingTypeConverter.cs" />
+    <Compile Include="Match_V3\Enums\Converters\CapturedPointConverter.cs" />
+    <Compile Include="Match_V3\Enums\Converters\EventTypeConverter.cs" />
+    <Compile Include="Match_V3\Enums\Converters\LaneTypeConverter.cs" />
+    <Compile Include="Match_V3\Enums\Converters\LevelUpTypeConverter.cs" />
+    <Compile Include="Match_V3\Enums\Converters\MonsterSubTypeConverter.cs" />
+    <Compile Include="Match_V3\Enums\Converters\MonsterTypeConverter.cs" />
+    <Compile Include="Match_V3\Enums\Converters\QueueTypeConverter.cs" />
+    <Compile Include="Match_V3\Enums\Converters\SeasonConverter.cs" />
+    <Compile Include="Match_V3\Enums\Converters\TowerTypeConverter.cs" />
+    <Compile Include="Match_V3\Enums\Converters\WardTypeConverter.cs" />
+    <Compile Include="Match_V3\Enums\EventType.cs" />
+    <Compile Include="Match_V3\Enums\LaneType.cs" />
+    <Compile Include="Match_V3\Enums\LevelUpType.cs" />
+    <Compile Include="Match_V3\Enums\MonsterSubType.cs" />
+    <Compile Include="Match_V3\Enums\MonsterType.cs" />
+    <Compile Include="Match_V3\Enums\QueueType.cs" />
+    <Compile Include="Match_V3\Enums\Season.cs" />
+    <Compile Include="Match_V3\Enums\TowerType.cs" />
+    <Compile Include="Match_V3\Enums\WardType.cs" />
+    <Compile Include="Match_V3\MasteryDto.cs" />
+    <Compile Include="Match_V3\MatchDto.cs" />
+    <Compile Include="Match_V3\MatchEventDto.cs" />
+    <Compile Include="Match_V3\MatchFrameDto.cs" />
+    <Compile Include="Match_V3\MatchlistDto.cs" />
+    <Compile Include="Match_V3\MatchParticipantFrameDto.cs" />
+    <Compile Include="Match_V3\MatchPositionDto.cs" />
+    <Compile Include="Match_V3\MatchReferenceDto.cs" />
+    <Compile Include="Match_V3\MatchTimelineDto.cs" />
+    <Compile Include="Match_V3\ParticipantDto.cs" />
+    <Compile Include="Match_V3\ParticipantIdentityDto.cs" />
+    <Compile Include="Match_V3\ParticipantStatsDto.cs" />
+    <Compile Include="Match_V3\ParticipantTimelineDto.cs" />
+    <Compile Include="Match_V3\PlayerDto.cs" />
+    <Compile Include="Match_V3\RuneDto.cs" />
+    <Compile Include="Match_V3\TeamBansDto.cs" />
+    <Compile Include="Match_V3\TeamStatsDto.cs" />
+    <Compile Include="Misc\Converters\DateTimeConverterFromLong.cs" />
+    <Compile Include="Misc\Converters\DateTimeConverterFromString.cs" />
+    <Compile Include="Misc\Converters\DateTimeConverterFromStringTimestamp.cs" />
+    <Compile Include="Misc\Converters\GameTypeConverter.cs" />
+    <Compile Include="Misc\Converters\LaneConverter.cs" />
+    <Compile Include="Misc\Converters\MapTypeConverter.cs" />
+    <Compile Include="Misc\Converters\PlatformConverter.cs" />
+    <Compile Include="Misc\Converters\RegionConverter.cs" />
+    <Compile Include="Misc\Converters\RoleConverter.cs" />
+    <Compile Include="Misc\Converters\TimeSpanConverterFromMS.cs" />
+    <Compile Include="Misc\Converters\TimeSpanConverterFromS.cs" />
+    <Compile Include="Misc\CultureInfoExtensions.cs" />
+    <Compile Include="Misc\GameMode.cs" />
+    <Compile Include="Misc\GameType.cs" />
+    <Compile Include="Misc\Lane.cs" />
+    <Compile Include="Misc\Language.cs" />
+    <Compile Include="Misc\MapType.cs" />
+    <Compile Include="Misc\Platform.cs" />
+    <Compile Include="Misc\Region.cs" />
+    <Compile Include="Misc\Role.cs" />
+    <Compile Include="Misc\Util.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RiotApi.cs" />
+    <Compile Include="RiotSharpException.cs" />
+    <Compile Include="Runes_V3\RunePageDto.cs" />
+    <Compile Include="Runes_V3\RunePagesDto.cs" />
+    <Compile Include="Runes_V3\RuneSlotDto.cs" />
+    <Compile Include="Spectator_V3\BannedChampion.cs" />
+    <Compile Include="Spectator_V3\CurrentGameInfo.cs" />
+    <Compile Include="Spectator_V3\CurrentGameParticipant.cs" />
+    <Compile Include="Spectator_V3\FeaturedGameInfo.cs" />
+    <Compile Include="Spectator_V3\FeaturedGames.cs" />
+    <Compile Include="Spectator_V3\Mastery.cs" />
+    <Compile Include="Spectator_V3\Observer.cs" />
+    <Compile Include="Spectator_V3\Participant.cs" />
+    <Compile Include="Spectator_V3\Rune.cs" />
+    <Compile Include="StaticRiotApi.cs" />
+    <Compile Include="Summoner_V3\SummonerDTO.cs" />
+    <Compile Include="Tournament_Stub_V3\LobbyEventDTO.cs" />
+    <Compile Include="Tournament_Stub_V3\LobbyEventDTOWrapper.cs" />
+    <Compile Include="Tournament_V3\LobbyEventDTO.cs" />
+    <Compile Include="Tournament_V3\LobbyEventDTOWrapper.cs" />
+    <Compile Include="Tournament_V3\TournamentCodeDTO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

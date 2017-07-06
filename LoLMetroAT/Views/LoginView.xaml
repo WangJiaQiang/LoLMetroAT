@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="LoLMetroAT.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Controls:MetroProgressBar 
+                            Grid.Row="0"
+                            x:Name="IsIndeterminatePB"             
+                            Margin="1, 0, 0, 0"
+                            Visibility="Hidden"
+                            Foreground="WhiteSmoke"                     
+                            IsIndeterminate="True"
+                            Width="350"
+                            Maximum="100"
+                            Minimum="0"/>
+        <StackPanel 
+                            x:Name="StackPanel1"
+                            Margin="0,0,0,3" 
+                            Grid.Row="1"
+                            HorizontalAlignment="Center">
+
+            <TextBlock TextAlignment="Left" Width="240" ToolTip="{Binding ErrorMsg}" Text="{Binding ErrorMsg}" Foreground="Red"/>
+
+        </StackPanel>
+        <StackPanel 
+                            x:Name="StackPanel2"
+                            Grid.Row="2"
+                            Margin="0 0 0 15"
+                            HorizontalAlignment="Center">
+
+            <AdornerDecorator
+                              Grid.Column="0"
+                              MinWidth="100"
+                              Margin="0,0,0,0"
+                              HorizontalAlignment="Left">
+
+                <ComboBox 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    x:Name="CBoxRegion"
+                    Width="200"
+                    Height="27"
+                    Margin="0, 0, 0, 0"
+                    Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                        Controls:ControlsHelper.MouseOverBorderBrush="{DynamicResource AccentColorBrush}"
+                    Controls:TextBoxHelper.Watermark="Please select an Region"
+                    IsEditable="True"
+                    SelectedValue="{Binding Region, ValidatesOnDataErrors=True}"
+                    ItemsSource="{Binding Enums}"
+                    SelectedIndex="-1">
+                </ComboBox>
+
+            </AdornerDecorator>
+
+            <AdornerDecorator
+                              MinWidth="100"
+                              Margin="0,7,0,0"
+                              HorizontalAlignment="Left">
+
+                <TextBox 
+                    Grid.Row="1"
+                    x:Name="TbxSummonerName"
+                    Height="27"
+                    HorizontalAlignment="Left"
+                    Text="{Binding SummonerName, ValidatesOnDataErrors=True}"
+                    Controls:ControlsHelper.FocusBorderBrush="{DynamicResource AccentColorBrush}"
+                        Controls:ControlsHelper.MouseOverBorderBrush="{DynamicResource AccentColorBrush}"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.IsWaitingForData="True"
+                    Controls:TextBoxHelper.Watermark="Enter Your Summoner Name" Width="240" />
+
+            </AdornerDecorator>
+
+            <AdornerDecorator HorizontalAlignment="Left"
+                                  Width="240"
+                                  MinWidth="100"
+                                  Margin="0,7,0,0">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+
+                    <Button
+                        x:Name="CancelBtn"
+        		        Width="80"
+        		        Content="Cancel"
+                        BorderBrush="{DynamicResource AccentColorBrush}"
+                        BorderThickness="1"
+                        Controls:ControlsHelper.ContentCharacterCasing="Normal"
+                        Style="{DynamicResource AccentedSquareButtonStyle}">
+                    </Button>
+
+                    <Button
+                        x:Name="LoginBtn"
+        		        Width="80"
+        		        Margin="10,0,0,0"
+        		        Content="Login"
+                        BorderBrush="{DynamicResource AccentColorBrush}"
+                        BorderThickness="1"
+                        Controls:ControlsHelper.ContentCharacterCasing="Normal"
+                        Style="{DynamicResource AccentedSquareButtonStyle}">
+                    </Button>
+
+                </StackPanel>
+
+            </AdornerDecorator>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

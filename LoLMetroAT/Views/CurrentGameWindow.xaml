@@ -1,0 +1,1718 @@
+﻿<Controls:MetroWindow x:Class="LoLMetroApp.Windows.CurrentGameWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:ValueConverter="clr-namespace:LoLMetroAT.ValueConverter"
+                      Height="520" Width="1160"
+                      Foreground="Goldenrod"
+                      BorderBrush="{DynamicResource AccentColorBrush}"
+                      NonActiveBorderBrush="{DynamicResource AccentColorBrush}"
+                      NonActiveGlowBrush="{DynamicResource AccentColorBrush}"
+                      NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush}"
+                      OverrideDefaultWindowCommandsBrush="{DynamicResource AccentColorBrush}"
+                      BorderThickness="2"
+                      ShowIconOnTitleBar="False"
+                      ResizeMode="NoResize" 
+                      WindowStartupLocation="CenterScreen" 
+                      Topmost="True" 
+                      ShowSystemMenuOnRightClick="False" 
+                      ShowMinButton="False" 
+                      ShowMaxRestoreButton="False" 
+                      ShowCloseButton="False" 
+                      FocusManager.IsFocusScope="False"
+                      RightWindowCommandsOverlayBehavior="Never" 
+                      ShowActivated="False" 
+                      TitleCaps="False" 
+                      ShowTitleBar="False" 
+                      IsEnabled="False" 
+                      ShowInTaskbar="False" 
+                      WindowStyle="None"
+                      >
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ValueConverter:LoLStaticDataConverter x:Key="LoLStaticDataConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Controls:MetroWindow.Background>
+        <ImageBrush ImageSource="/LoLMetroAT;component/Images/CurrentGameBackImg.jpg" Opacity="0.4" Stretch="UniformToFill"/>
+    </Controls:MetroWindow.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel 
+            Grid.Row="1" 
+            Grid.Column="0"
+            Margin="4, 4, 0, 1"
+            VerticalAlignment="Top">
+
+            <Border
+                x:Name="GBBlueGameItem1"
+                Margin="2, 2, 2, 6"
+                CornerRadius="0"
+                BorderThickness="0 0 0 1"
+                BorderBrush="{DynamicResource AccentColorBrush}"
+                >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
+                        Margin="4, 2, 4, 2"
+                        Grid.Row="0">
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border 
+                                    CornerRadius="0" Width="23" Height="23" Grid.Column="0"
+                                    
+                                    >
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[0].ProfileIcon, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ProFileIcon}}"/>
+                                    </Border.Background>
+
+                                </Border>
+
+                                <TextBlock Grid.Column="1" Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding BlueCurrentGameItemDetailPropertys[0].SummonerName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <Border 
+                        Margin="4, 2, 4, 2"
+                        CornerRadius="2"
+                        Grid.Row="1">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                ToolTip="{Binding BlueGameItemDetailPropertys[0].Participant.Stats.ChampLevel}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                
+                                >
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[0].ChampionId, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ChampionImg}}"/>
+                                </Border.Background>
+                            </Border>
+
+                            <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[0].TotalSessionsWon, StringFormat='勝 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[0].TotalSessionsLost, StringFormat='敗 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[0].WinningPercentage, StringFormat={}{0} %, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <TextBlock Width="110" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[0].ChampionPoints, StringFormat='{}{0} Pnt', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+
+                                        <Border Grid.Column="0" Margin="10,0,0,0" Width="48" Height="48">
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[0].TierDivision, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.TierImg}}"/>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1" Margin="2,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[0].Division, StringFormat={}{0}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[0].LeaguePoints, StringFormat='{}{0} L', UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="4"
+                                Margin="2, 2, 4, 2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                >
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+            <Border
+                x:Name="GBBlueGameItem2"
+                Margin="2, 2, 2, 6"
+                CornerRadius="0"
+                BorderThickness="0 0 0 1"
+                BorderBrush="{DynamicResource AccentColorBrush}"
+                >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
+                        Margin="4, 2, 4, 2"
+                        Grid.Row="0">
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border 
+                                    CornerRadius="0" Width="23" Height="23" Grid.Column="0"
+                                    
+                                    >
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[1].ProfileIcon, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ProFileIcon}}"/>
+                                    </Border.Background>
+
+                                </Border>
+
+                                <TextBlock Grid.Column="1" Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding BlueCurrentGameItemDetailPropertys[1].SummonerName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <Border 
+                        Margin="4, 2, 4, 2"
+                        CornerRadius="2"
+                        Grid.Row="1">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                ToolTip="{Binding BlueGameItemDetailPropertys[0].Participant.Stats.ChampLevel}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                
+                                >
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[1].ChampionId, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ChampionImg}}"/>
+                                </Border.Background>
+                            </Border>
+
+                            <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[1].TotalSessionsWon, StringFormat='勝 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[1].TotalSessionsLost, StringFormat='敗 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[1].WinningPercentage, StringFormat={}{0} %, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <TextBlock Width="110" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[1].ChampionPoints, StringFormat='{}{0} Pnt', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+
+                                        <Border Grid.Column="0" Margin="10,0,0,0" Width="48" Height="48">
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[1].TierDivision, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.TierImg}}"/>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1" Margin="2,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[1].Division, StringFormat={}{0}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[1].LeaguePoints, StringFormat='{}{0} L', UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="4"
+                                Margin="2, 2, 4, 2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                >
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+            <Border
+                x:Name="GBBlueGameItem3"
+                Margin="2, 2, 2, 6"
+                CornerRadius="0"
+                BorderThickness="0 0 0 1"
+                BorderBrush="{DynamicResource AccentColorBrush}"
+                >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
+                        Margin="4, 2, 4, 2"
+                        Grid.Row="0">
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border 
+                                    CornerRadius="0" Width="23" Height="23" Grid.Column="0"
+                                    
+                                    >
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[2].ProfileIcon, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ProFileIcon}}"/>
+                                    </Border.Background>
+
+                                </Border>
+
+                                <TextBlock Grid.Column="1" Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding BlueCurrentGameItemDetailPropertys[2].SummonerName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <Border 
+                        Margin="4, 2, 4, 2"
+                        CornerRadius="2"
+                        Grid.Row="1">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                ToolTip="{Binding BlueGameItemDetailPropertys[0].Participant.Stats.ChampLevel}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                
+                                >
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[2].ChampionId, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ChampionImg}}"/>
+                                </Border.Background>
+                            </Border>
+
+                            <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[2].TotalSessionsWon, StringFormat='勝 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[2].TotalSessionsLost, StringFormat='敗 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[2].WinningPercentage, StringFormat={}{0} %, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <TextBlock Width="110" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[2].ChampionPoints, StringFormat='{}{0} Pnt', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+
+                                        <Border Grid.Column="0" Margin="10,0,0,0" Width="48" Height="48">
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[2].TierDivision, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.TierImg}}"/>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1" Margin="2,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[2].Division, StringFormat={}{0}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[2].LeaguePoints, StringFormat='{}{0} L', UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="4"
+                                Margin="2, 2, 4, 2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                >
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+            <Border
+                x:Name="GBBlueGameItem4"
+                Margin="2, 2, 2, 6"
+                CornerRadius="0"
+                BorderThickness="0 0 0 1"
+                BorderBrush="{DynamicResource AccentColorBrush}"
+                >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
+                        Margin="4, 2, 4, 2"
+                        Grid.Row="0">
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border 
+                                    CornerRadius="0" Width="23" Height="23" Grid.Column="0"
+                                    
+                                    >
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[3].ProfileIcon, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ProFileIcon}}"/>
+                                    </Border.Background>
+
+                                </Border>
+
+                                <TextBlock Grid.Column="1" Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding BlueCurrentGameItemDetailPropertys[3].SummonerName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <Border 
+                        Margin="4, 2, 4, 2"
+                        CornerRadius="2"
+                        Grid.Row="1">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                ToolTip="{Binding BlueGameItemDetailPropertys[0].Participant.Stats.ChampLevel}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                
+                                >
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[3].ChampionId, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ChampionImg}}"/>
+                                </Border.Background>
+                            </Border>
+
+                            <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[3].TotalSessionsWon, StringFormat='勝 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[3].TotalSessionsLost, StringFormat='敗 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[3].WinningPercentage, StringFormat={}{0} %, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <TextBlock Width="110" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[3].ChampionPoints, StringFormat='{}{0} Pnt', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+
+                                        <Border Grid.Column="0" Margin="10,0,0,0" Width="48" Height="48">
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[3].TierDivision, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.TierImg}}"/>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1" Margin="2,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[3].Division, StringFormat={}{0}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[3].LeaguePoints, StringFormat='{}{0} L', UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </Grid>
+
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="4"
+                                Margin="2, 2, 4, 2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                >
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+            <Border
+                x:Name="GBBlueGameItem5"
+                Margin="2, 2, 2, 6"
+                CornerRadius="0"
+                BorderThickness="0 0 0 1"
+                BorderBrush="{DynamicResource AccentColorBrush}"
+                >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
+                        Margin="4, 2, 4, 2"
+                        Grid.Row="0">
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border 
+                                    CornerRadius="0" Width="23" Height="23" Grid.Column="0"
+                                    
+                                    >
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[4].ProfileIcon, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ProFileIcon}}"/>
+                                    </Border.Background>
+
+                                </Border>
+
+                                <TextBlock Grid.Column="1" Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding BlueCurrentGameItemDetailPropertys[4].SummonerName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <Border 
+                        Margin="4, 2, 4, 2"
+                        CornerRadius="2"
+                        Grid.Row="1">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                ToolTip="{Binding BlueGameItemDetailPropertys[0].Participant.Stats.ChampLevel}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                
+                                >
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[4].ChampionId, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ChampionImg}}"/>
+                                </Border.Background>
+                            </Border>
+
+                            <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[4].TotalSessionsWon, StringFormat='勝 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[4].TotalSessionsLost, StringFormat='敗 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[4].WinningPercentage, StringFormat={}{0} %, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <TextBlock Width="110" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[4].ChampionPoints, StringFormat='{}{0} Pnt', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+
+                                        <Border Grid.Column="0" Margin="10,0,0,0" Width="48" Height="48">
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding BlueCurrentGameItemDetailPropertys[4].TierDivision, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.TierImg}}"/>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1" Margin="2,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[4].Division, StringFormat={}{0}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding BlueCurrentGameItemDetailPropertys[4].LeaguePoints, StringFormat='{}{0} L', UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="4"
+                                Margin="2, 2, 4, 2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                >
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+        </StackPanel>
+
+        <StackPanel 
+            x:Name="LeftHeaderPanel"
+            Grid.Row="0" 
+            Grid.Column="0"
+            Margin="2, 4, 2, 4" VerticalAlignment="Bottom">
+
+            <Border BorderThickness="0 0 0 2" BorderBrush="{DynamicResource AccentColorBrush}">
+
+                <Border Margin="6, 2, 4, 2"
+                        CornerRadius="2">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                >
+
+                        </Border>
+
+                        <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <!--<TextBlock Foreground="White" Width="50" TextAlignment="Left" Text="{Binding CurrentRegion, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.HeaderTitleForWLCnt}}"/>-->
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                            <!--<TextBlock Foreground="White" Width="50" TextAlignment="Left" Text="{Binding CurrentRegion, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.HeaderTitleForWinningPercentage}}"/>-->
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                            <!--<TextBlock Foreground="White" Width="110" TextAlignment="Left" Text="{Binding CurrentRegion, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.HeaderTitleForChampionPoints}}"/>-->
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="10,0,0,0">
+                                    <!--<TextBlock Foreground="White" TextAlignment="Left" Text="{Binding CurrentRegion, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.HeaderTitleForTierDivision}}"/>-->
+                                </StackPanel>
+
+                            </Grid>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </Border>
+
+            </Border>
+
+        </StackPanel>
+
+        <StackPanel 
+            x:Name="CenterHeaderPanel"
+            Grid.Row="0" 
+            Grid.Column="1"
+            Margin="2, 4, 2, 4"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom">
+
+            <Border
+                Width="65"
+                Height="50">
+                <!--<Border.Background>
+                    <ImageBrush ImageSource="/LoLMetroAT;component/Icons/png/white_logo_transparent_background_small.png"/>
+                </Border.Background>-->
+
+            </Border>
+
+        </StackPanel>
+
+        <StackPanel 
+            x:Name="RightHeaderPanel"
+            Grid.Row="0" 
+            Grid.Column="2"
+            Margin="2, 4, 2, 4" VerticalAlignment="Bottom">
+
+            <Border BorderThickness="0 0 0 2" BorderBrush="{DynamicResource AccentColorBrush}">
+
+                <Border Margin="2, 2, 4, 2"
+                        CornerRadius="2">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                >
+
+                        </Border>
+
+                        <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <!--<TextBlock Foreground="White" Width="50" TextAlignment="Left" Text="{Binding CurrentRegion, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.HeaderTitleForWLCnt}}"/>-->
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                            <!--<TextBlock Foreground="White" Width="50" TextAlignment="Left" Text="{Binding CurrentRegion, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.HeaderTitleForWinningPercentage}}"/>-->
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                            <!--<TextBlock Foreground="White" Width="110" TextAlignment="Left" Text="{Binding CurrentRegion, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.HeaderTitleForChampionPoints}}"/>-->
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="10,0,0,0">
+                                    <!--<TextBlock Foreground="White" TextAlignment="Left" Text="{Binding CurrentRegion, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.HeaderTitleForTierDivision}}"/>-->
+                                </StackPanel>
+
+                            </Grid>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </Border>
+
+            </Border>
+
+        </StackPanel>
+
+        <StackPanel 
+            Grid.Row="1" 
+            Grid.Column="2"
+            Margin="0, 4, 4, 1"
+            VerticalAlignment="Top">
+
+            <Border
+                x:Name="GBRedGameItem1"
+                Margin="2, 2, 2, 6"
+                CornerRadius="0"
+                BorderThickness="0 0 0 1"
+                BorderBrush="{DynamicResource AccentColorBrush}"
+                >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
+                        Margin="4, 2, 4, 2"
+                        Grid.Row="0">
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border 
+                                    CornerRadius="0" Width="23" Height="23" Grid.Column="0"
+                                    
+                                    >
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[0].ProfileIcon, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ProFileIcon}}"/>
+                                    </Border.Background>
+
+                                </Border>
+
+                                <TextBlock Grid.Column="1" Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding RedCurrentGameItemDetailPropertys[0].SummonerName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <Border 
+                        Margin="4, 2, 4, 2"
+                        CornerRadius="2"
+                        Grid.Row="1">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                ToolTip="{Binding BlueGameItemDetailPropertys[0].Participant.Stats.ChampLevel}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                
+                                >
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[0].ChampionId, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ChampionImg}}"/>
+                                </Border.Background>
+                            </Border>
+
+                            <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel x:Name="SPRightWLSample" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[0].TotalSessionsWon, StringFormat='勝 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[0].TotalSessionsLost, StringFormat='敗 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel x:Name="SPRightWinningPercentageSample" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[0].WinningPercentage, StringFormat={}{0} %, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel x:Name="SPRightChampionPointsSample" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <TextBlock Width="110" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[0].ChampionPoints, StringFormat='{}{0} Pnt', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+
+                                        <Border Grid.Column="0" Margin="10,0,0,0" Width="48" Height="48">
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[0].TierDivision, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.TierImg}}"/>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1" Margin="2,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[0].Division, StringFormat={}{0}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[0].LeaguePoints, StringFormat='{}{0} L', UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="4"
+                                Margin="2, 2, 4, 2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                >
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+            <Border
+                x:Name="GBRedGameItem2"
+                Margin="2, 2, 2, 6"
+                CornerRadius="0"
+                BorderThickness="0 0 0 1"
+                BorderBrush="{DynamicResource AccentColorBrush}"
+                >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
+                        Margin="4, 2, 4, 2"
+                        Grid.Row="0">
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border 
+                                    CornerRadius="0" Width="23" Height="23" Grid.Column="0"
+                                    
+                                    >
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[1].ProfileIcon, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ProFileIcon}}"/>
+                                    </Border.Background>
+
+                                </Border>
+
+                                <TextBlock Grid.Column="1" Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding RedCurrentGameItemDetailPropertys[1].SummonerName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <Border 
+                        Margin="4, 2, 4, 2"
+                        CornerRadius="2"
+                        Grid.Row="1">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                ToolTip="{Binding BlueGameItemDetailPropertys[0].Participant.Stats.ChampLevel}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                
+                                >
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[1].ChampionId, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ChampionImg}}"/>
+                                </Border.Background>
+                            </Border>
+
+                            <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[1].TotalSessionsWon, StringFormat='勝 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[1].TotalSessionsLost, StringFormat='敗 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[1].WinningPercentage, StringFormat={}{0} %, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <TextBlock Width="110" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[1].ChampionPoints, StringFormat='{}{0} Pnt', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+
+                                        <Border Grid.Column="0" Margin="10,0,0,0" Width="48" Height="48">
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[1].TierDivision, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.TierImg}}"/>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1" Margin="2,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[1].Division, StringFormat={}{0}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[1].LeaguePoints, StringFormat='{}{0} L', UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="4"
+                                Margin="2, 2, 4, 2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                >
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+            <Border
+                x:Name="GBRedGameItem3"
+                Margin="2, 2, 2, 6"
+                CornerRadius="0"
+                BorderThickness="0 0 0 1"
+                BorderBrush="{DynamicResource AccentColorBrush}"
+                >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
+                        Margin="4, 2, 4, 2"
+                        Grid.Row="0">
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border 
+                                    CornerRadius="0" Width="23" Height="23" Grid.Column="0"
+                                    
+                                    >
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[2].ProfileIcon, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ProFileIcon}}"/>
+                                    </Border.Background>
+
+                                </Border>
+
+                                <TextBlock Grid.Column="1" Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding RedCurrentGameItemDetailPropertys[2].SummonerName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <Border 
+                        Margin="4, 2, 4, 2"
+                        CornerRadius="2"
+                        Grid.Row="1">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                ToolTip="{Binding BlueGameItemDetailPropertys[0].Participant.Stats.ChampLevel}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                
+                                >
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[2].ChampionId, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ChampionImg}}"/>
+                                </Border.Background>
+                            </Border>
+
+                            <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[2].TotalSessionsWon, StringFormat='勝 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[2].TotalSessionsLost, StringFormat='敗 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[2].WinningPercentage, StringFormat={}{0} %, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <TextBlock Width="110" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[2].ChampionPoints, StringFormat='{}{0} Pnt', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+
+                                        <Border Grid.Column="0" Margin="10,0,0,0" Width="48" Height="48">
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[2].TierDivision, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.TierImg}}"/>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1" Margin="2,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[2].Division, StringFormat={}{0}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[2].LeaguePoints, StringFormat='{}{0} L', UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </Grid>
+
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="4"
+                                Margin="2, 2, 4, 2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                >
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+            <Border
+                x:Name="GBRedGameItem4"
+                Margin="2, 2, 2, 6"
+                CornerRadius="0"
+                BorderThickness="0 0 0 1"
+                BorderBrush="{DynamicResource AccentColorBrush}"
+                >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
+                        Margin="4, 2, 4, 2"
+                        Grid.Row="0">
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border 
+                                    CornerRadius="0" Width="23" Height="23" Grid.Column="0"
+                                    
+                                    >
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[3].ProfileIcon, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ProFileIcon}}"/>
+                                    </Border.Background>
+
+                                </Border>
+
+                                <TextBlock Grid.Column="1" Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding RedCurrentGameItemDetailPropertys[3].SummonerName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <Border 
+                        Margin="4, 2, 4, 2"
+                        CornerRadius="2"
+                        Grid.Row="1">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                ToolTip="{Binding BlueGameItemDetailPropertys[0].Participant.Stats.ChampLevel}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                
+                                >
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[3].ChampionId, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ChampionImg}}"/>
+                                </Border.Background>
+                            </Border>
+
+                            <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[3].TotalSessionsWon, StringFormat='勝 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[3].TotalSessionsLost, StringFormat='敗 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[3].WinningPercentage, StringFormat={}{0} %, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <TextBlock Width="110" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[3].ChampionPoints, StringFormat='{}{0} Pnt', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+
+                                        <Border Grid.Column="0" Margin="10,0,0,0" Width="48" Height="48">
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[3].TierDivision, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.TierImg}}"/>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1" Margin="2,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[3].Division, StringFormat={}{0}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[3].LeaguePoints, StringFormat='{}{0} L', UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </Grid>
+
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="4"
+                                Margin="2, 2, 4, 2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                >
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+            <Border
+                x:Name="GBRedGameItem5"
+                Margin="2, 2, 2, 6"
+                CornerRadius="0"
+                BorderThickness="0 0 0 1"
+                BorderBrush="{DynamicResource AccentColorBrush}"
+                >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
+                        Margin="4, 2, 4, 2"
+                        Grid.Row="0">
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border 
+                                    CornerRadius="0" Width="23" Height="23" Grid.Column="0"
+                                    
+                                    >
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[4].ProfileIcon, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ProFileIcon}}"/>
+                                    </Border.Background>
+
+                                </Border>
+
+                                <TextBlock Grid.Column="1" Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding RedCurrentGameItemDetailPropertys[4].SummonerName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <Border 
+                        Margin="4, 2, 4, 2"
+                        CornerRadius="2"
+                        Grid.Row="1">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                ToolTip="{Binding BlueGameItemDetailPropertys[0].Participant.Stats.ChampLevel}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="36" Height="36"
+                                
+                                >
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[4].ChampionId, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ChampionImg}}"/>
+                                </Border.Background>
+                            </Border>
+
+                            <StackPanel Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[4].TotalSessionsWon, StringFormat='勝 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[4].TotalSessionsLost, StringFormat='敗 {0}', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                                <TextBlock Width="50" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[4].WinningPercentage, StringFormat={}{0} %, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <TextBlock Width="110" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[4].ChampionPoints, StringFormat='{}{0} Pnt', UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+
+                                        <Border Grid.Column="0" Margin="10,0,0,0" Width="48" Height="48">
+                                            <Border.Background>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding RedCurrentGameItemDetailPropertys[4].TierDivision, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.TierImg}}"/>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1" Margin="2,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[4].Division, StringFormat={}{0}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <TextBlock FontSize="11" TextAlignment="Left" Text="{Binding RedCurrentGameItemDetailPropertys[4].LeaguePoints, StringFormat='{}{0} L', UpdateSourceTrigger=PropertyChanged}"/>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="4"
+                                Margin="2, 2, 4, 2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                >
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+        </StackPanel>
+
+    </Grid>
+</Controls:MetroWindow>

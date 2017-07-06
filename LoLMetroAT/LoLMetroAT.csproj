@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9319C4F1-D1FF-4949-BF77-4B28AABB71D3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LoLMetroAT</RootNamespace>
+    <AssemblyName>LoLMetroAT</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.4.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.4.0\lib\net\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.1.9.0\lib\net45\MahApps.Metro.IconPacks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro.SimpleChildWindow, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\MahApps.Metro.SimpleChildWindow.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Models\ChampionMasteryBinding.cs" />
+    <Compile Include="Models\LoginState.cs" />
+    <Compile Include="Models\LoLStaticData.cs" />
+    <Compile Include="Models\MatchReferenceBinding.cs" />
+    <Compile Include="ValueConverter\LoLStaticDataConverter.cs" />
+    <Compile Include="ViewModels\GameDetailItemViewModel.cs" />
+    <Compile Include="ViewModels\GameDetailViewModel.cs" />
+    <Compile Include="ViewModels\LeaguesRankDataModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\SummonerDetailViewModel.cs" />
+    <Compile Include="Views\CurrentGameWindow.xaml.cs">
+      <DependentUpon>CurrentGameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameDetailItemView.xaml.cs">
+      <DependentUpon>GameDetailItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameDetailView.xaml.cs">
+      <DependentUpon>GameDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameMatchView.xaml.cs">
+      <DependentUpon>GameMatchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LeaguesRankDataGridView.xaml.cs">
+      <DependentUpon>LeaguesRankDataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LeaguesRankView.xaml.cs">
+      <DependentUpon>LeaguesRankView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoLProgressDialog.xaml.cs">
+      <DependentUpon>LoLProgressDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SummonerDetailView.xaml.cs">
+      <DependentUpon>SummonerDetailView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\CurrentGameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameDetailItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameMatchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LeaguesRankDataGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LeaguesRankView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoLProgressDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SummonerDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLL\MahApps.Metro.SimpleChildWindow.dll" />
+    <Resource Include="riot.txt" />
+    <Resource Include="Images\Rank_Frame\bronze.png" />
+    <Resource Include="Images\Rank_Frame\challenger.png" />
+    <Resource Include="Images\Rank_Frame\diamond.png" />
+    <Resource Include="Images\Rank_Frame\gold.png" />
+    <Resource Include="Images\Rank_Frame\master.png" />
+    <Resource Include="Images\Rank_Frame\platinum.png" />
+    <Resource Include="Images\Rank_Frame\silver.png" />
+    <Resource Include="DLL\MahApps.Metro.SimpleChildWindow.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Bottom_icon.png" />
+    <Resource Include="Images\ChampionSquare.png" />
+    <Resource Include="Images\CurrentGameBackImg.jpg" />
+    <Resource Include="Images\ItemSquare.png" />
+    <Resource Include="Images\Jungler_icon.png" />
+    <Resource Include="Images\Middle_icon.png" />
+    <Resource Include="Images\Support_icon.png" />
+    <Resource Include="Images\Tier_icons\bronze.png" />
+    <Resource Include="Images\Tier_icons\bronze_i.png" />
+    <Resource Include="Images\Tier_icons\bronze_ii.png" />
+    <Resource Include="Images\Tier_icons\bronze_iii.png" />
+    <Resource Include="Images\Tier_icons\bronze_iv.png" />
+    <Resource Include="Images\Tier_icons\bronze_v.png" />
+    <Resource Include="Images\Tier_icons\challenger.png" />
+    <Resource Include="Images\Tier_icons\diamond.png" />
+    <Resource Include="Images\Tier_icons\diamond_i.png" />
+    <Resource Include="Images\Tier_icons\diamond_ii.png" />
+    <Resource Include="Images\Tier_icons\diamond_iii.png" />
+    <Resource Include="Images\Tier_icons\diamond_iv.png" />
+    <Resource Include="Images\Tier_icons\diamond_v.png" />
+    <Resource Include="Images\Tier_icons\gold.png" />
+    <Resource Include="Images\Tier_icons\gold_i.png" />
+    <Resource Include="Images\Tier_icons\gold_ii.png" />
+    <Resource Include="Images\Tier_icons\gold_iii.png" />
+    <Resource Include="Images\Tier_icons\gold_iv.png" />
+    <Resource Include="Images\Tier_icons\gold_v.png" />
+    <Resource Include="Images\Tier_icons\master.png" />
+    <Resource Include="Images\Tier_icons\platinum.png" />
+    <Resource Include="Images\Tier_icons\platinum_i.png" />
+    <Resource Include="Images\Tier_icons\platinum_ii.png" />
+    <Resource Include="Images\Tier_icons\platinum_iii.png" />
+    <Resource Include="Images\Tier_icons\platinum_iv.png" />
+    <Resource Include="Images\Tier_icons\platinum_v.png" />
+    <Resource Include="Images\Tier_icons\provisional.png" />
+    <Resource Include="Images\Tier_icons\silver.png" />
+    <Resource Include="Images\Tier_icons\silver_i.png" />
+    <Resource Include="Images\Tier_icons\silver_ii.png" />
+    <Resource Include="Images\Tier_icons\silver_iii.png" />
+    <Resource Include="Images\Tier_icons\silver_iv.png" />
+    <Resource Include="Images\Tier_icons\silver_v.png" />
+    <Resource Include="Images\Top_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RiotSharp\RiotSharp.csproj">
+      <Project>{4bfb1d8e-d2e7-4e2f-a50a-1e5f1aeb0b59}</Project>
+      <Name>RiotSharp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /E /Y $(ProjectDir)Images $(TargetDir)Images\</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

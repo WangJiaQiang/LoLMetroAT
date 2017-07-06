@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="LoLMetroAT.Views.GameDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Views="clr-namespace:LoLMetroAT.Views"
+             mc:Ignorable="d">
+
+    <!--<UserControl.Background>
+        <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/CurrentGameBackImg.jpg" />
+    </UserControl.Background>-->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock Foreground="Red" FontWeight="Bold" Text="{Binding ErrorMessage}"/>
+        </StackPanel>
+
+        <StackPanel 
+            x:Name="SP1"
+            Grid.Row="1" 
+            Grid.Column="0"
+            Margin="0, 0, 6, 0"
+            VerticalAlignment="Top">
+            <Views:GameDetailItemView/>
+            <Views:GameDetailItemView/>
+            <Views:GameDetailItemView/>
+            <Views:GameDetailItemView/>
+            <Views:GameDetailItemView/>
+        </StackPanel>
+
+        <StackPanel 
+            x:Name="SP2"
+            Grid.Row="1" 
+            Grid.Column="1"
+            Margin="6, 0, 0, 0"
+            VerticalAlignment="Top">
+            <Views:GameDetailItemView/>
+            <Views:GameDetailItemView/>
+            <Views:GameDetailItemView/>
+            <Views:GameDetailItemView/>
+            <Views:GameDetailItemView/>
+        </StackPanel>
+    </Grid>
+</UserControl>

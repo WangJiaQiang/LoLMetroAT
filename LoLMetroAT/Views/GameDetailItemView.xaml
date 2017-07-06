@@ -1,0 +1,271 @@
+﻿<UserControl x:Class="LoLMetroAT.Views.GameDetailItemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:ValueConverter="clr-namespace:LoLMetroAT.ValueConverter"
+             mc:Ignorable="d" Height="90">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ValueConverter:LoLStaticDataConverter x:Key="LoLStaticDataConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Width="482">
+        <Border Margin="2, 2, 2, 2"
+                BorderThickness="{Binding IsSelfDataFlag, Converter={StaticResource LoLStaticDataConverter}, ConverterParameter={x:Static ValueConverter:ConverterType.ItemBorderThickness}}"
+                BorderBrush="{DynamicResource AccentColorBrush}"
+                >
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel 
+                        Margin="4, 0, 0, 2"
+                        Grid.Row="0">
+
+                    <StackPanel >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border 
+                                    CornerRadius="3" Width="23" Height="23" Grid.Column="0"
+                                    
+                                    BorderThickness="1">
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/Support_icon.png"/>
+                                </Border.Background>
+
+                            </Border>
+
+                            <TextBlock Grid.Column="1" Margin="5, 0, 0, 0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding PartIdentity.Player.SummonerName}"/>
+
+                            <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <Border Width="205" Margin="0,0,4,0">
+                                    <Border.ToolTip>
+                                        <TextBlock Text="{Binding Path=Part.Stats.TotalDamageDealtToChampions, StringFormat='Damage To Champions: {0}'}" />
+                                    </Border.ToolTip>
+
+                                    <Grid>
+                                        <Controls:MetroProgressBar BorderThickness="1" 
+                                                                   BorderBrush="{DynamicResource AccentColorBrush}"
+                                                                   Background="Transparent"
+                                                                   Height="{Binding ElementName=tbHidden, Path=ActualHeight}"
+                                                                   Foreground="{DynamicResource AccentColorBrush}"
+                                                                   Maximum="{Binding AllDamageDealtToChampions}"
+                                                                   Minimum="0"
+                                                                   Value="{Binding Path=Part.Stats.TotalDamageDealtToChampions}" />
+
+                                        <StackPanel Width="150" Orientation="Horizontal">
+                                            <TextBlock x:Name="tbHidden" Width="70" FontSize="10" TextAlignment="Right" Text="{Binding Path=Part.Stats.TotalDamageDealtToChampions}" />
+                                            <TextBlock Width="10" FontSize="9" TextAlignment="Center" Text="/"/>
+                                            <TextBlock Width="70" FontSize="10" TextAlignment="Left" Text="{Binding AllDamageDealtToChampions}" />
+                                        </StackPanel>
+
+                                    </Grid>
+
+                                </Border>
+                            </StackPanel>
+
+
+                        </Grid>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+                <Border 
+                        Margin="4, 0, 0, 2"
+                        BorderBrush="{DynamicResource AccentColorBrush}"
+                        Grid.Row="1" Height="60">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border 
+                                Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="6" Width="48" Height="48"
+                                
+                                BorderThickness="1">
+                            <Border.ToolTip>
+                                <TextBlock FontWeight="Bold" Text="{Binding Part.Stats.ChampLevel, StringFormat='Lv {0}'}" />
+                            </Border.ToolTip>
+
+                            <Border.Background>
+                                <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/Tier_icons/diamond_iv.png"/>
+                            </Border.Background>
+                        </Border>
+
+                        <StackPanel
+                                Grid.Column="1"
+                                Margin="6, 2, 2, 2"
+                                VerticalAlignment="Center"
+                                >
+
+                            <Border  
+                                    CornerRadius="3" Width="23" Height="23"  Margin="0, 1, 0, 0"
+                                    
+                                    BorderThickness="1">
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/Tier_icons/diamond_iv.png"/>
+                                </Border.Background>
+                            </Border>
+
+                            <Border 
+                                    CornerRadius="3" Width="23" Height="23" Margin="0, 1, 0, 0"
+                                    
+                                    BorderThickness="1">
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/Tier_icons/diamond_iv.png"/>
+                                </Border.Background>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" Width="180" VerticalAlignment="Center" Margin="5,0,0,0">
+                            <StackPanel>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <TextBlock Width="80" TextAlignment="Right" Grid.Column="0" Text="{Binding KDA, StringFormat={}{0}}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Margin="15,0,0,0">
+
+                                        <TextBlock Text="{Binding AllMinionsKilled}"/>
+                                        <TextBlock Text="{Binding Part.Stats.GoldEarned, StringFormat={}{0:C}, ConverterCulture=ja-JP}"/>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </StackPanel>
+
+                        </StackPanel>
+
+                        <StackPanel
+                                Grid.Column="4"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                >
+                            <Border  
+                                    CornerRadius="3" Width="26" Height="26"
+                                    BorderBrush="{DynamicResource AccentColorBrush}"
+                                    BorderThickness="1">
+
+                                <Border.Background>
+                                    <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/Tier_icons/diamond_iv.png"/>
+                                </Border.Background>
+                            </Border>
+                        </StackPanel>
+                        
+                        <StackPanel
+                                Grid.Column="5"
+                                Margin="0, 2, 2, 2"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                >
+                            
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                            </Grid>
+
+                            <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+                                <Border  
+                                    CornerRadius="3" Width="26" Height="26"
+                                    BorderBrush="{DynamicResource AccentColorBrush}"
+                                    BorderThickness="1">
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/Tier_icons/diamond_iv.png"/>
+                                    </Border.Background>
+                                </Border>
+                                <Border  
+                                    CornerRadius="3" Width="26" Height="26"
+                                    BorderBrush="{DynamicResource AccentColorBrush}"
+                                    BorderThickness="1">
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/Tier_icons/diamond_iv.png"/>
+                                    </Border.Background>
+                                </Border>
+                                <Border  
+                                    CornerRadius="3" Width="26" Height="26"
+                                    BorderBrush="{DynamicResource AccentColorBrush}"
+                                    BorderThickness="1">
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/Tier_icons/diamond_iv.png"/>
+                                    </Border.Background>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
+                                <Border  
+                                    CornerRadius="3" Width="26" Height="26"
+                                    BorderBrush="{DynamicResource AccentColorBrush}"
+                                    BorderThickness="1">
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/Tier_icons/diamond_iv.png"/>
+                                    </Border.Background>
+                                </Border>
+                                <Border  
+                                    CornerRadius="3" Width="26" Height="26"
+                                    BorderBrush="{DynamicResource AccentColorBrush}"
+                                    BorderThickness="1">
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/Tier_icons/diamond_iv.png"/>
+                                    </Border.Background>
+                                </Border>
+                                <Border  
+                                    CornerRadius="3" Width="26" Height="26"
+                                    BorderBrush="{DynamicResource AccentColorBrush}"
+                                    BorderThickness="1">
+
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" ImageSource="/LoLMetroAT;component/Images/Tier_icons/diamond_iv.png"/>
+                                    </Border.Background>
+                                </Border>
+                            </StackPanel>
+                            
+                        </StackPanel>
+
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+
+        </Border>
+    </Grid>
+</UserControl>
